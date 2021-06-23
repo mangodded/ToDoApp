@@ -6,25 +6,31 @@ import android.os.Bundle
 import android.widget.Button
 import android.widget.EditText
 import android.widget.Toast
+import com.godson.todoapp.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
     val validusername: String = "admin"
     val validpassword: String = "admin"
-   private lateinit var username_input: EditText
-   private lateinit var password_input: EditText
-   private lateinit var submit_button: Button
+  // private lateinit var username_input: EditText
+  // private lateinit var password_input: EditText
+  // private lateinit var submit_button: Button
+
+    private lateinit var binding: ActivityMainBinding
 
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-        username_input = findViewById(R.id.username_input)
-        password_input = findViewById(R.id.password_input)
-        submit_button = findViewById(R.id.submit_button)
+      // username_input = findViewById(R.id.username_input)
+       // password_input = findViewById(R.id.password_input)
+      //  submit_button = findViewById(R.id.submit_button)
 
-        submit_button.setOnClickListener {
-            val username=username_input.text.toString()
-            val password=password_input.text.toString()
+        binding = ActivityMainBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+
+        binding.submitButton.setOnClickListener {
+            val username=binding.usernameInput.text.toString()
+            val password=binding.passwordInput.text.toString()
             login(username, password)
         }
     }
